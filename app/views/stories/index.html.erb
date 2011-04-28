@@ -1,0 +1,54 @@
+ <div style="font-family:'Trebuchet MS'; color:#006600; font-size:14px;">
+    <p align="right">You are loigin width Id: <%= session[:user_id] %></p>
+  </div>
+  <div style="font-family:'Trebuchet MS'; color:#0000FF; font-size:14px;">
+    <p align="right"><%= Time.now() %></p>
+  </div>
+  
+<h1>All submited  stories</h1>
+   
+<table>
+
+<% @stories.each do |story| %>
+  <tr>
+  
+    <td><%=image_tag story.image, :class=>'image_size' %></td>
+    
+    <td>
+     <dl>
+        <dt><%=story.title %></dt>
+        <dd><%=h truncate(story.des.gsub(/<.*?>/,''),
+:length => 70) %></dd>
+      </dl>
+    </td>
+    <td width="3%"></td>
+    <td><%=h story.date_submit %></td>
+    <td width="2%"></td>
+    
+    <td><div id="vote_score">
+        <font color="red">vote:</font><font color="#0000FF"><%=h story.count %></font>
+    </div></td>
+    
+    <td><div id="vote_link">  
+        <% form_remote_tag :url => { :action => 'vote', :id => story.id } do %>
+          <%= submit_tag "VOTE" %>
+        <% end %>
+    </div></td> 
+    
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<% if  session[:user_id] %>
+
+<%= button_to 'Submit Story', :controller=>"stories", :action=>"new" %>
+
+<%  end %>
+
+<% if  !session[:user_id] %>
+
+<%= button_to 'Submit Story', :controller=>"logins", :action=>"new" %>
+
+<%  end %>

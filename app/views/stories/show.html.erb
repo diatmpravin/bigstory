@@ -1,0 +1,23 @@
+<p>
+  <b>Title of story:</b>
+  <%=h @story.title %>
+</p>
+
+<p>
+  <b>Image(submited by):</b>
+  <%=h @story.image %>
+</p>
+
+<p>
+  <b>Story:</b>
+  <%=h @story.des %>
+</p>
+
+<p>
+  <b>Date of submition:</b>
+  <%=h @story.date_submit %>
+</p>
+
+
+<%= link_to 'Edit', edit_story_path(@story) %> |
+<%= link_to 'Back', stories_path %>

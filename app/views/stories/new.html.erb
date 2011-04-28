@@ -1,0 +1,25 @@
+<h1>Submit Your Story Here</h1>
+
+<% form_for(@story) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :Title_of_story %>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :Image_of_writer%>
+    <%= f.text_field :image %>
+  </p>
+  <p>
+    <%= f.label :Story %>
+    <%= f.text_area :des %>
+  </p>
+  <p>
+    <%= f.label :date_of_submition %>
+    <%= f.date_select :date_submit %>
+  </p>
+  <p>
+    <%= button_to 'Submit Story', :controller=>"stories", :action=>"index" %>
+  </p>
+<% end %>
