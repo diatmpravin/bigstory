@@ -39,9 +39,8 @@ ActiveRecord::Schema.define(:version => 20110414082045) do
   end
 
   create_table "votes", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.integer  "story_id"
+    t.datetime "created_at"
   end
 
 end
